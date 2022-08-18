@@ -2,6 +2,6 @@
 import org.apache.commons.math3.primes.Primes
 
 def call() {
-  var isPrime = Primes.isPrime(1)
+  boolean isPrime = Primes.isPrime(1)
   sh "echo ${isPrime}"
 }
