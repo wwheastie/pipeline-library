@@ -1,3 +1,3 @@
 def call() {
-   sh 'token generated!'
+   sh 'echo token generated!'
 }
