@@ -1,4 +1,4 @@
-@Grab('org.apache.commons:commons-maths3:3.4.1')
+@Grab('org.apache.commons:commons-math3:3.4.1')
 import org.apache.commons.math3.primes.Primes
 
 def call() {
