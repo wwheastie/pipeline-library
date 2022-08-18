@@ -5,5 +5,10 @@ import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.auth.oauth2.TokenVerifier;
 
 def call() {
+   String clientId = "test";
+   String clientEmail = "test";
+   String privateKeyPcks8 = "test";
+   String privateKeyId = "test";
+   ServiceAccountCredentials.fromPkcs8(clientId, clientEmail, privateKeyPcks8, privateKeyId, Collections.emptyList());
    sh 'echo token generated!'
 }
