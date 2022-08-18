@@ -1,3 +1,9 @@
+@Grab('com.google.auth:google-auth-library-oauth2-http:1.3.0')
+import com.google.api.client.json.webtoken.JsonWebSignature;
+import com.google.auth.oauth2.IdToken;
+import com.google.auth.oauth2.ServiceAccountCredentials;
+import com.google.auth.oauth2.TokenVerifier;
+
 def call() {
    sh 'echo token generated!'
 }
