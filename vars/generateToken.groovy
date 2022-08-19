@@ -30,6 +30,7 @@ def getServiceAccountCredentials(jsonMap) {
 }
 
 def createArtifact(token) {
-    writeFile file: "token.txt", text: token
+    String outputFile = "token.txt";
+    writeFile file: outputFile, text: token
     archiveArtifacts artifacts: outputFile
 }
