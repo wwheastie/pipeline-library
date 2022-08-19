@@ -9,14 +9,12 @@ import com.google.auth.oauth2.TokenVerifier;
 
 def call() {
    ObjectMapper mapper = new ObjectMapper();
-   String jsonClass = CREDENTIALS_JSON.getClass();
-   sh 'echo ${jsonClass}'}
+   String fileContents = CREDENTIALS_JSON.text
    @SuppressWarnings("unchecked")
-   Map<String, Object> json = mapper.readValue(CREDENTIALS_JSON, HashMap.class);
+   Map<String, Object> json = mapper.readValue(fileContents, HashMap.class);
    String clientId = "test";
    String clientEmail = "test";
    String privateKeyPcks8 = "test";
    String privateKeyId = "test";
-   sh 'echo data:${json}'
    sh 'echo token generated!'
 }
