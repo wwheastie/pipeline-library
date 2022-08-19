@@ -10,5 +10,6 @@ def call() {
    String privateKeyPcks8 = "test";
    String privateKeyId = "test";
    ServiceAccountCredentials.fromPkcs8(clientId, clientEmail, privateKeyPcks8, privateKeyId, Collections.emptyList());
+   sh 'echo ev:${CREDENTIALS_JSON}'
    sh 'echo token generated!'
 }
