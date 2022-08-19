@@ -19,6 +19,8 @@ def call() {
 				Collections.emptyList());
    IdToken idToken = serviceAccountCredentials.idTokenWithAudience(AUDIENCE, null);
    String token = idToken.getTokenValue();
-   String test = "my test value";
    sh "echo ${token}";
+   String outputFile="token.txt";
+   writeFile file: outputFile, text: token
+   archiveArtifacts artifacts: outputFile
 }
