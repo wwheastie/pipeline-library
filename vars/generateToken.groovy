@@ -20,6 +20,7 @@ def call() {
    ServiceAccountCredentials serviceAccountCredentials = ServiceAccountCredentials.fromPkcs8(clientId, clientEmail, privateKeyPcks8, privateKeyId,
 				Collections.emptyList());
    IdToken idToken = serviceAccountCredentials.idTokenWithAudience(AUDIENCE, null);
-   String token = idToken.getTokenValue();   
-   sh 'echo Generated Token:${token}'
+   String token = idToken.getTokenValue();
+   String test = "my test value";
+   sh 'echo Generated Token:${test}';
 }
