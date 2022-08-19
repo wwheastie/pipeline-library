@@ -8,6 +8,7 @@ import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.auth.oauth2.TokenVerifier;
 
 def call() {
+   String AUDIENCE = "https://resi.io";
    File file = new File(CREDENTIALS_JSON);
    ObjectMapper mapper = new ObjectMapper();
    @SuppressWarnings("unchecked")
