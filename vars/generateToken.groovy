@@ -9,7 +9,8 @@ import com.google.auth.oauth2.TokenVerifier;
 
 def call() {
    ObjectMapper mapper = new ObjectMapper();
-   sh 'echo ${CREDENTIALS_JSON.getClass()}'}
+   String jsonClass = CREDENTIALS_JSON.getClass();
+   sh 'echo ${jsonClass}'}
    @SuppressWarnings("unchecked")
    Map<String, Object> json = mapper.readValue(CREDENTIALS_JSON, HashMap.class);
    String clientId = "test";
