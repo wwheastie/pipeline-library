@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.json.webtoken.JsonWebSignature;
 import com.google.auth.oauth2.IdToken;
 import com.google.auth.oauth2.ServiceAccountCredentials;
-import com.google.auth.oauth2.TokenVerifier;
 
 def call() {
    String AUDIENCE = "https://resi.io";
