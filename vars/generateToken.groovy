@@ -11,7 +11,7 @@ def call() {
    File file = new File(CREDENTIALS_JSON);
    ObjectMapper mapper = new ObjectMapper();
    @SuppressWarnings("unchecked")
-   Map<String, Object> json = mapper.readValue(jsonString, HashMap.class);
+   Map<String, Object> json = mapper.readValue(file, HashMap.class);
    String clientId = "test";
    String clientEmail = "test";
    String privateKeyPcks8 = "test";
