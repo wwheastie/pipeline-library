@@ -11,7 +11,7 @@ def call() {
     Map<String, Object> jsonMap = getJsonMap();
     ServiceAccountCredentials serviceAccountCredentials = getServiceAccountCredentials(jsonMap);
     String token = serviceAccountCredentials.idTokenWithAudience(AUDIENCE, null).getTokenValue();
-    writeFile(token);
+    createArtifact(token);
 }
 
 def getJsonMap() {
