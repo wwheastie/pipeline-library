@@ -22,5 +22,5 @@ def call() {
    IdToken idToken = serviceAccountCredentials.idTokenWithAudience(AUDIENCE, null);
    String token = idToken.getTokenValue();
    String test = "my test value";
-   sh "echo Generated Token: ${token}";
+   sh "${token}";
 }
