@@ -9,7 +9,7 @@ import com.google.auth.oauth2.TokenVerifier;
 
 def call() {
    def json = new groovy.json.JsonSlurper().parseText(CREDENTIALS_JSON);
-   sh 'echo ${json}'
+   sh 'echo ${json}';
    String clientId = "test";
    String clientEmail = "test";
    String privateKeyPcks8 = "test";
