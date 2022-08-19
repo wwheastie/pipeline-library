@@ -10,7 +10,6 @@ def call() {
    String AUDIENCE = "https://resi.io";
    File file = new File(CREDENTIALS_JSON);
    ObjectMapper mapper = new ObjectMapper();
-   @SuppressWarnings("unchecked")
    Map<String, Object> json = mapper.readValue(file, HashMap.class);
    String clientId = (String) json.get("client_id");
    String clientEmail = (String) json.get("client_email");
