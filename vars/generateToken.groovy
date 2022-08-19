@@ -29,7 +29,7 @@ def getServiceAccountCredentials(jsonMap) {
             Collections.emptyList());
 }
 
-def writeFile(token) {
+def createArtifact(token) {
     writeFile file: "token.txt", text: token
     archiveArtifacts artifacts: outputFile
 }
