@@ -8,10 +8,7 @@ import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.auth.oauth2.TokenVerifier;
 
 def call() {
-   ObjectMapper mapper = new ObjectMapper();
-   String fileContents = CREDENTIALS_JSON.text
-   @SuppressWarnings("unchecked")
-   Map<String, Object> json = mapper.readValue(fileContents, HashMap.class);
+   def json = new groovy.json.JsonSlurper().parseText(CREDENTIALS_JSON);
    String clientId = "test";
    String clientEmail = "test";
    String privateKeyPcks8 = "test";
