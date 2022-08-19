@@ -12,9 +12,13 @@ def call() {
    ObjectMapper mapper = new ObjectMapper();
    @SuppressWarnings("unchecked")
    Map<String, Object> json = mapper.readValue(file, HashMap.class);
-   String clientId = "test";
-   String clientEmail = "test";
-   String privateKeyPcks8 = "test";
-   String privateKeyId = "test";
-   sh 'echo token generated!'
+   String clientId = (String) json.get("client_id");
+   String clientEmail = (String) json.get("client_email");
+   String privateKeyPcks8 = (String) json.get("private_key");
+   String privateKeyId = (String) json.get("private_key_id");
+   ServiceAccountCredentials serviceAccountCredentials = ServiceAccountCredentials.fromPkcs8(clientId, clientEmail, privateKeyPcks8, privateKeyId,
+				Collections.emptyList());
+   IdToken idToken = serviceAccountCredentials.idTokenWithAudience(AUDIENCE, null);
+   String token = idToken.getTokenValue();   
+   sh 'echo Generated Token:${token}'
 }
