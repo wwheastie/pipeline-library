@@ -7,20 +7,29 @@ import com.google.auth.oauth2.IdToken;
 import com.google.auth.oauth2.ServiceAccountCredentials;
 
 def call() {
-   String AUDIENCE = "https://resi.io";
-   File file = new File(CREDENTIALS_JSON);
-   ObjectMapper mapper = new ObjectMapper();
-   Map<String, Object> json = mapper.readValue(file, HashMap.class);
-   String clientId = (String) json.get("client_id");
-   String clientEmail = (String) json.get("client_email");
-   String privateKeyPcks8 = (String) json.get("private_key");
-   String privateKeyId = (String) json.get("private_key_id");
-   ServiceAccountCredentials serviceAccountCredentials = ServiceAccountCredentials.fromPkcs8(clientId, clientEmail, privateKeyPcks8, privateKeyId,
-				Collections.emptyList());
-   IdToken idToken = serviceAccountCredentials.idTokenWithAudience(AUDIENCE, null);
-   String token = idToken.getTokenValue();
-   sh "echo ${token}";
-   String outputFile="token.txt";
-   writeFile file: outputFile, text: token
-   archiveArtifacts artifacts: outputFile
+    String AUDIENCE = "https://resi.io";
+    Map<String, Object> jsonMap = getJsonMap();
+    ServiceAccountCredentials serviceAccountCredentials = getServiceAccountCredentials(jsonMap);
+    String token = serviceAccountCredentials.idTokenWithAudience(AUDIENCE, null).getTokenValue();
+    writeFile(token);
+}
+
+def getJsonMap() {
+    File file = new File(CREDENTIALS_JSON);
+    ObjectMapper mapper = new ObjectMapper();
+    return mapper.readValue(file, HashMap.class);
+}
+
+def getServiceAccountCredentials(jsonMap) {
+    String clientId = (String) jsonMap.get("client_id");
+    String clientEmail = (String) jsonMap.get("client_email");
+    String privateKeyPcks8 = (String) jsonMap.get("private_key");
+    String privateKeyId = (String) jsonMap.get("private_key_id");
+    return ServiceAccountCredentials.fromPkcs8(clientId, clientEmail, privateKeyPcks8, privateKeyId,
+            Collections.emptyList());
+}
+
+def writeFile(token) {
+    writeFile file: "token.txt", text: token
+    archiveArtifacts artifacts: outputFile
 }
